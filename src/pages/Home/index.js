@@ -6,6 +6,7 @@ import {
 import {
   Container, InputSearchContainer, Header, ListHeader, Card, ErrorContainer,
 } from './styles';
+import { sucess } from '../../components/Toasts';
 
 import profile from '../../assets/images/icons/profile.svg';
 import arrow from '../../assets/images/icons/arrow.svg';
@@ -94,8 +95,8 @@ export default function Home() {
 
     const response = await ProductsServices.buyProducts(id, buyProduct);
 
-    if (!response) {
-      console.log('alright');
+    if (response) {
+      sucess('Deletado com sucesso');
     }
 
     loadProducts();
@@ -201,7 +202,7 @@ export default function Home() {
                   <img src={update} alt="Atualizar" />
                 </Link>
 
-                <button type="button" onClick={product.quantity > 10 ? () => handleOpenModal(product) : () => handleDelete(product.id, product)}>
+                <button type="button" onClick={product.quantity > 5 ? () => handleOpenModal(product) : () => handleDelete(product.id, product)}>
                   <img src={trash} alt="Delete" />
                 </button>
               </div>
