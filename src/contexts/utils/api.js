@@ -1,5 +1,8 @@
 import axios from 'axios';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export default axios.create({
-  baseURL: 'https://web-production-4037.up.railway.app/',
+  baseURL: process.env.API_URL,
 });
